@@ -3,4 +3,4 @@ HTML page with Covid19 statistics, based on project from JavaBrains, https://www
 It's all made fast, so just hardcoded, if source ofinformations will be deleted, application won't start.
 Used spring boot and thymeleaf
 
-![GitHub Logo](/photos/example.jpg)
+![GitHub Logo](https://github.com/Dominik355/corona-tracker/blob/master/photo/example.jpg)
