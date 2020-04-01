@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Coronavirus Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container">
+<h1>Coronavirus Tracker Application</h1>
+<p>Celosvetové štatistiky Koronavírusu</p>
+    <p><a th:href="@{https://github.com/CSSEGISandData/COVID-19}">Zdroj štatistík</a></p>
+    <p><a th:href="@{https://www.health.gov.sk/Titulka}">Slovensko</a></p>
+
+<div class="jumbotron bg-warning text-white">
+    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+    <p class="lead">
+        <span >Celkový počet ochorení ku dňu </span>
+        <span th:text="${lastDate}">
+    </p>
+    <hr class="my-4">
+    <p>
+        <span>Celkový počet nových prípadov od predošlého dňa: </span>
+        <span th:text="${totalNewCases}">
+    </p>
+    <p>
+        <span>Celkový počet uzdravení: </span>
+        <span th:text="${totalRecoveries}"></span>
+    </p>
+    <p>
+        <span>Celkový počet úmrtí: </span>
+        <span th:text="${totalDeaths}"></span>
+    </p>
+</div>
+    <h1>Najdôležitejšie</h1>
+    <div class="jumbotron bg-primary text-dark">
+    <table class="table">
+        <tr>
+            <th>Región</th>
+            <th>Štát</th>
+            <th>Celkový počet prípadov</th>
+            <th>Zmena od posledného dňa</th>
+            <th>Uzdravenia</th>
+            <th>Úmrtia</th>
+        </tr>
+        <tr th:each="locationStat : ${mostImportantStats}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestCases}">0</td>
+            <td th:text="${locationStat.deltaCases}">0</td>
+            <td th:text="${locationStat.recovered}">0</td>
+            <td th:text="${locationStat.deaths}">0</td>
+        </tr>
+    </table>
+    </div>
+<h1>Európa</h1>
+    <table class="table">
+        <tr>
+            <th>Región</th>
+            <th>Štát</th>
+            <th>Celkový počet prípadov</th>
+            <th>Zmena od posledného dňa</th>
+            <th>Uzdravenia</th>
+            <th>Úmrtia</th>
+        </tr>
+        <tr th:each="locationStat : ${europeStats}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestCases}">0</td>
+            <td th:text="${locationStat.deltaCases}">0</td>
+            <td th:text="${locationStat.recovered}">0</td>
+            <td th:text="${locationStat.deaths}">0</td>
+        </tr>
+    </table>
+<h1>Zvyšok sveta</h1>
+<table class="table">
+    <tr>
+        <th>Región</th>
+        <th>Štát</th>
+        <th>Celkový počet prípadov</th>
+        <th>Zmena od posledného dňa</th>
+        <th>Uzdravenia</th>
+        <th>Úmrtia</th>
+    </tr>
+    <tr th:each="locationStat : ${restStats}">
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.country}"></td>
+        <td th:text="${locationStat.latestCases}">0</td>
+        <td th:text="${locationStat.deltaCases}">0</td>
+        <td th:text="${locationStat.recovered}">0</td>
+        <td th:text="${locationStat.deaths}">0</td>
+    </tr>
+</table>
+</div>
+
+</body>
+
+</html>
